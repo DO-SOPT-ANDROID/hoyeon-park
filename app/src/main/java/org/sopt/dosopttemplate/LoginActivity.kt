@@ -2,6 +2,7 @@ package org.sopt.dosopttemplate
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -57,7 +58,8 @@ class LoginActivity : AppCompatActivity() {
             if (binding.idEdit.text.toString() == id && binding.pwEdit.text.toString() == pw
             ) {
                 makeToast("로그인에 성공했습니다!")
-                val intent = Intent(this, MainActivity::class.java)
+                Log.d("LoginActivity", "로그인 성공 - ID: $id, PW: $pw")
+                val intent = Intent(this, HomeActivity::class.java)
                 intent.putExtra("idValue", id)
                 intent.putExtra("pwValue", pw)
                 intent.putExtra("nameValue", name)
@@ -65,6 +67,11 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 makeToast("로그인에 실패했습니다.")
+                Log.d("LoginActivity",
+                    "로그인 실패 - 사용자 입력 ID: ${binding.idEdit.text}, " +
+                            "사용자 입력 PW: ${binding.pwEdit.text}, " +
+                            "저장된 ID: $id, " +
+                            "저장된 PW: $pw")
             }
         }
     }
@@ -77,3 +84,4 @@ class LoginActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
+
