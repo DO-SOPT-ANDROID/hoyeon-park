@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="35dp">
 
 
         <TextView
@@ -16,8 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="새 게시물 만들기"
-            android:textStyle="bold"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,8 +33,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/post_title"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/welcomeText" />
 
@@ -39,9 +42,9 @@
             android:id="@+id/titleEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="150dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="150dp"
             android:hint="@string/post_title_value"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,8 +58,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/post_place"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleEdit" />
 
@@ -64,9 +67,9 @@
             android:id="@+id/placeEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="150dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="150dp"
             android:hint="@string/post_place_value"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,8 +84,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/post_time"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/placeEdit" />
 
@@ -90,9 +93,9 @@
             android:id="@+id/timeEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="150dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="150dp"
             android:hint="@string/post_time_value"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,8 +110,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/post_recruit"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/timeEdit" />
 
@@ -120,8 +123,8 @@
             android:layout_marginTop="5dp"
             android:hint="@string/post_recruit_value"
             android:inputType="textPassword"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/peopleNumber"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recruitText"
             app:layout_constraintWidth_default="wrap"
             app:layout_constraintWidth_max="100dp" />
@@ -133,9 +136,9 @@
             android:layout_marginStart="4dp"
             android:text="명"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/recruitEdit"
             app:layout_constraintStart_toEndOf="@id/recruitEdit"
-            app:layout_constraintTop_toTopOf="@id/recruitEdit"
-            app:layout_constraintBottom_toBottomOf="@id/recruitEdit" />
+            app:layout_constraintTop_toTopOf="@id/recruitEdit" />
 
         <TextView
             android:id="@+id/deadlineText"
@@ -144,8 +147,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:text="@string/post_deadline"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/recruitEdit" />
 
@@ -153,12 +156,12 @@
             android:id="@+id/deadlineEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="200dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="5dp"
-            android:hint="@string/post_deadline_value"
-            android:focusable="false"
+            android:layout_marginRight="200dp"
             android:clickable="true"
+            android:focusable="false"
+            android:hint="@string/post_deadline_value"
             android:onClick="showDatePickerDialog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -173,8 +176,20 @@
             android:drawableStart="@drawable/ic_calendar_month_maincolor_24"
             android:onClick="showDatePickerDialog"
             app:layout_constraintStart_toEndOf="@id/deadlineEdit"
-            app:layout_constraintTop_toTopOf="@id/deadlineEdit"
-            />
+            app:layout_constraintTop_toTopOf="@id/deadlineEdit" />
+
+        <android.widget.Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="150dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/custom_button_background"
+            android:text="@string/post_submit"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/datePickerButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
