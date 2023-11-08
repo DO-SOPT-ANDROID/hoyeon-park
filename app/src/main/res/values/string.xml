@@ -24,7 +24,7 @@
     <string name="post_recruit">모집 인원</string>
     <string name="post_recruit_value">숫자 입력</string>
     <string name="post_deadline">모집 마감 일자</string>
-    <string name="post_deadline_value">YY-MM-SS</string>
+    <string name="post_deadline_value">YY-MM-DD</string>
     <string name="post_submit">제출하기</string>
 
 </resources>
