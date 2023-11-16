@@ -8,9 +8,14 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import org.sopt.dosopttemplate.data.RequestLoginDto
+import org.sopt.dosopttemplate.data.ResponseLoginDto
+import org.sopt.dosopttemplate.data.ServicePool.authService
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.presentation.home.HomeActivity
 import org.sopt.dosopttemplate.presentation.signup.SignUpActivity
+import retrofit2.Call
+import retrofit2.Response
 import java.util.Locale
 
 class LoginActivity : AppCompatActivity() {
@@ -31,7 +36,8 @@ class LoginActivity : AppCompatActivity() {
         setResult()
 
         initSignBtnClickListener()
-        initLoginBtnClickListener()
+        //initLoginBtnClickListener()
+        login()
     }
 
     private fun setResult() {
@@ -55,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun initLoginBtnClickListener() {
+    /*fun initLoginBtnClickListener() {
         binding.loginButton.setOnClickListener {
             if (binding.idEdit.text.toString() == id && binding.pwEdit.text.toString() == pw
             ) {
@@ -76,7 +82,7 @@ class LoginActivity : AppCompatActivity() {
                             "저장된 PW: $pw")
             }
         }
-    }
+    }*/
 
     fun makeSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
@@ -84,6 +90,39 @@ class LoginActivity : AppCompatActivity() {
 
     fun makeToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun login() {
+        val id = binding.idEdit.text.toString()
+        val password = binding.pwEdit.text.toString()
+
+        binding.loginButton.setOnClickListener{
+            authService.login(RequestLoginDto(id, password))
+                .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
+                    override fun onResponse(
+                        call: Call<ResponseLoginDto>,
+                        response: Response<ResponseLoginDto>,
+                    ) {
+                        if (response.isSuccessful) {
+                            val data: ResponseLoginDto = response.body()!!
+                            val userId = data.id
+                            Toast.makeText(
+                                this@LoginActivity,
+                                "로그인이 성공하였고 유저의 ID는 $userId 입니둥",
+                                Toast.LENGTH_SHORT,
+                            ).show()
+
+                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
+                        val errorMessage = "서버 통신 실패: ${t.message}"
+                        Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_SHORT).show()
+                    }
+                })
+        }
     }
 }
 
