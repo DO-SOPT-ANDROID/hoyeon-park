@@ -45,10 +45,9 @@ class LoginActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == RESULT_OK) {
-                id = result.data?.getStringExtra("idValue") ?: ""
-                pw = result.data?.getStringExtra("pwValue") ?: ""
-                name = result.data?.getStringExtra("nameValue") ?: ""
-                mbti = result.data?.getStringExtra("mbtiValue")?.uppercase(Locale.ROOT) ?: ""
+                id = result.data?.getStringExtra("username") ?: ""
+                pw = result.data?.getStringExtra("password") ?: ""
+                name = result.data?.getStringExtra("nickname") ?: ""
                 makeSnackbar("회원가입에 성공하였습니다!")
             }
         }
@@ -61,42 +60,14 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    /*fun initLoginBtnClickListener() {
-        binding.loginButton.setOnClickListener {
-            if (binding.idEdit.text.toString() == id && binding.pwEdit.text.toString() == pw
-            ) {
-                makeToast("로그인에 성공했습니다!")
-                Log.d("LoginActivity", "로그인 성공 - ID: $id, PW: $pw")
-                val intent = Intent(this, HomeActivity::class.java)
-                intent.putExtra("idValue", id)
-                intent.putExtra("pwValue", pw)
-                intent.putExtra("nameValue", name)
-                intent.putExtra("mbtiValue", mbti)
-                startActivity(intent)
-            } else {
-                makeToast("로그인에 실패했습니다.")
-                Log.d("LoginActivity",
-                    "로그인 실패 - 사용자 입력 ID: ${binding.idEdit.text}, " +
-                            "사용자 입력 PW: ${binding.pwEdit.text}, " +
-                            "저장된 ID: $id, " +
-                            "저장된 PW: $pw")
-            }
-        }
-    }*/
-
     fun makeSnackbar(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
 
-    fun makeToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
     private fun login() {
-        val id = binding.idEdit.text.toString()
-        val password = binding.pwEdit.text.toString()
-
         binding.loginButton.setOnClickListener{
+            val id = binding.idEdit.text.toString()
+            val password = binding.pwEdit.text.toString()
             authService.login(RequestLoginDto(id, password))
                 .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
                     override fun onResponse(
@@ -108,12 +79,19 @@ class LoginActivity : AppCompatActivity() {
                             val userId = data.id
                             Toast.makeText(
                                 this@LoginActivity,
-                                "로그인이 성공하였고 유저의 ID는 $userId 입니둥",
+                                "로그인이 성공하였습니다! 유저의 ID는 $userId 입니다.",
                                 Toast.LENGTH_SHORT,
                             ).show()
 
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                             startActivity(intent)
+                        }
+                        else{
+                            Toast.makeText(
+                                this@LoginActivity,
+                                "로그인에 실패하였습니다",
+                                Toast.LENGTH_SHORT,
+                            ).show()
                         }
                     }
 
