@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate
+package org.sopt.dosopttemplate.presentation.home
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
+import org.sopt.dosopttemplate.R
 import java.util.Calendar
 import java.util.Locale
 

@@ -1,13 +1,13 @@
-package org.sopt.dosopttemplate
+package org.sopt.dosopttemplate.presentation.signup
 
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import org.sopt.dosopttemplate.databinding.ActivitySignUpBinding
+import org.sopt.dosopttemplate.presentation.login.LoginActivity
 
 class SignUpActivity : AppCompatActivity() {
 

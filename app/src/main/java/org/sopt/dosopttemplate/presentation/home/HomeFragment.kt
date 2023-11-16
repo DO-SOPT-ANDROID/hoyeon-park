@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate
+package org.sopt.dosopttemplate.presentation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ConcatAdapter
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
-import org.sopt.dosopttemplate.FriendAdapter
-import org.sopt.dosopttemplate.MyProfileAdapter
+import org.sopt.dosopttemplate.R
+import org.sopt.dosopttemplate.presentation.myprofile.MyProfile
+import org.sopt.dosopttemplate.presentation.myprofile.MyProfileAdapter
 
 
 class HomeFragment: Fragment() {

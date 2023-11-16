@@ -14,25 +14,25 @@
         tools:targetApi="34">
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".presentation.login.LoginActivity"
             android:exported="true">
 
         </activity>
 
         <activity
-            android:name=".SignUpActivity"
+            android:name=".presentation.signup.SignUpActivity"
             android:exported="false">
 
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.mypage.MypageActivity"
             android:exported="false">
 
         </activity>
 
         <activity
-            android:name="org.sopt.dosopttemplate.HomeActivity"
+            android:name="org.sopt.dosopttemplate.presentation.home.HomeActivity"
             android:exported="true">
 
             <intent-filter>
