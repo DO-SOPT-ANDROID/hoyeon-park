@@ -13,4 +13,18 @@
     <string name="main_mbti">MBTI</string>
     <string name="main_mbti_value">MBTI를 입력해주세요</string>
     <string name="main_test">test</string>
+
+    <!--fragment_do_android.xml-->
+    <string name="post_title">모임 제목</string>
+    <string name="post_title_value">제목을 입력해주세요</string>
+    <string name="post_place">모임 장소</string>
+    <string name="post_place_value">장소를 입력해주세요</string>
+    <string name="post_time">모임 시간</string>
+    <string name="post_time_value">시간을 입력해주세요</string>
+    <string name="post_recruit">모집 인원</string>
+    <string name="post_recruit_value">숫자 입력</string>
+    <string name="post_deadline">모집 마감 일자</string>
+    <string name="post_deadline_value">YY-MM-DD</string>
+    <string name="post_submit">제출하기</string>
+
 </resources>
