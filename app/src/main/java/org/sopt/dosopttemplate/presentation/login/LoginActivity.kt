@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun initSignBtnClickListener() {
-        binding.signButton.setOnClickListener {
+        binding.btSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             resultLauncher.launch(intent)
         }
@@ -63,9 +63,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        binding.loginButton.setOnClickListener{
-            val id = binding.idEdit.text.toString()
-            val password = binding.pwEdit.text.toString()
+        binding.btLogin.setOnClickListener{
+            val id = binding.etIdEdit.text.toString()
+            val password = binding.etPwEdit.text.toString()
             authService.login(RequestLoginDto(id, password))
                 .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
                     override fun onResponse(

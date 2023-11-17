@@ -18,9 +18,9 @@ class MypageActivity : AppCompatActivity() {
                 "mbtiValue"
             )
         ) {
-            binding.idValue.text = intent.getStringExtra("idValue")
-            binding.nameValue.text = intent.getStringExtra("nameValue")
-            binding.mbtiValue.text = intent.getStringExtra("mbtiValue")
+            binding.tvIdValue.text = intent.getStringExtra("idValue")
+            binding.tvNameValue.text = intent.getStringExtra("nameValue")
+            binding.tvMbtiValue.text = intent.getStringExtra("mbtiValue")
         } else {
             makeToast("전달되지 않은 값이 있습니다.")
         }

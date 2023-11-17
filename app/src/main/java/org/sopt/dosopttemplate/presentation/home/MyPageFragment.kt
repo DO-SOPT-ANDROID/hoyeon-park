@@ -31,15 +31,14 @@ class MyPageFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val bundle = arguments
-        val userId = bundle?.getString("idValue")
-        val userName = bundle?.getString("nameValue")
-        val userMbti = bundle?.getString("mbtiValue")
+        val userId = bundle?.getString("userId")
+        val userName = bundle?.getString("userName")
+        val userMbti = bundle?.getString("userMbti")
 
-        binding.run {
-            idValue.text = userId
-            nameValue.text = userName
-            mbtiValue.text = userMbti
-        }
+        binding.tvIdValue.text = userId
+        binding.tvMbtiValue.text = userName
+        binding.tvNameValue.text = userMbti
+
         Log.d("MyPageFragment", "전달된 데이터 - userId: $userId, userName: $userName, userMbti: $userMbti")
     }
 

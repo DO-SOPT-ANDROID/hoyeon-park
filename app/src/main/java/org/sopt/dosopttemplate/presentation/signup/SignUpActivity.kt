@@ -42,10 +42,10 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun signup() {
-        binding.signButton.setOnClickListener {
-            val username = binding.idEdit.text.toString()
-            val password = binding.pwEdit.text.toString()
-            val nickname = binding.nameEdit.text.toString()
+        binding.btSignUp.setOnClickListener {
+            val username = binding.etIdEdit.text.toString()
+            val password = binding.etPwEdit.text.toString()
+            val nickname = binding.etNicknameEdit.text.toString()
 
             ServicePool.authService.signup(RequestSignUpDto(username, password, nickname))
                 .enqueue(object : Callback<Unit> {

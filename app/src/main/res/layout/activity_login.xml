@@ -7,7 +7,7 @@
     tools:context=".presentation.mypage.MypageActivity">
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/tv_welcome_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/idText"
+        android:id="@+id/tv_id_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -26,10 +26,10 @@
         android:text="@string/main_id"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeText" />
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome_login" />
 
     <EditText
-        android:id="@+id/idEdit"
+        android:id="@+id/et_id_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
@@ -37,10 +37,10 @@
         android:hint="@string/main_id_value"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idText" />
+        app:layout_constraintTop_toBottomOf="@id/tv_id_text" />
 
     <TextView
-        android:id="@+id/pwText"
+        android:id="@+id/tv_pw_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -48,10 +48,10 @@
         android:text="@string/main_pw"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idEdit" />
+        app:layout_constraintTop_toBottomOf="@id/et_id_edit" />
 
     <EditText
-        android:id="@+id/pwEdit"
+        android:id="@+id/et_pw_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
@@ -60,19 +60,19 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pwText" />
+        app:layout_constraintTop_toBottomOf="@id/tv_pw_text" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/bt_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="10dp"
         android:text="@string/main_login"
-        app:layout_constraintBottom_toTopOf="@id/signButton" />
+        app:layout_constraintBottom_toTopOf="@id/bt_sign_up" />
 
     <Button
-        android:id="@+id/signButton"
+        android:id="@+id/bt_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
