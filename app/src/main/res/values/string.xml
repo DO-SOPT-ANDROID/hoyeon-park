@@ -13,6 +13,7 @@
     <string name="main_mbti">MBTI</string>
     <string name="main_mbti_value">MBTI를 입력해주세요</string>
     <string name="main_test">test</string>
+    <string name="main_create_post">새 게시물 만들기</string>
 
     <!--fragment_do_android.xml-->
     <string name="post_title">모임 제목</string>
@@ -27,4 +28,7 @@
     <string name="post_deadline_value">YY-MM-DD</string>
     <string name="post_submit">제출하기</string>
 
+    <!--item_follower.xml-->
+    <string name="follower_name">박호연</string>
+    <string name="follower_email">hoyeon313131@naver.com</string>
 </resources>
