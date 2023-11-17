@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.data
+package org.sopt.dosopttemplate.data.auth
 
 import retrofit2.Call
 import retrofit2.http.Body

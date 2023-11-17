@@ -2,21 +2,19 @@ package org.sopt.dosopttemplate.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import org.sopt.dosopttemplate.data.RequestLoginDto
-import org.sopt.dosopttemplate.data.ResponseLoginDto
+import org.sopt.dosopttemplate.data.auth.RequestLoginDto
+import org.sopt.dosopttemplate.data.auth.ResponseLoginDto
 import org.sopt.dosopttemplate.data.ServicePool.authService
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.presentation.home.HomeActivity
 import org.sopt.dosopttemplate.presentation.signup.SignUpActivity
 import retrofit2.Call
 import retrofit2.Response
-import java.util.Locale
 
 class LoginActivity : AppCompatActivity() {
 

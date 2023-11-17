@@ -1,21 +1,25 @@
 package org.sopt.dosopttemplate.presentation.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.ConcatAdapter
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
-import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.presentation.myprofile.MyProfile
-import org.sopt.dosopttemplate.presentation.myprofile.MyProfileAdapter
+import org.sopt.dosopttemplate.data.follower.ResponseFollowerDto
+import org.sopt.dosopttemplate.presentation.follower.FollowerAdapter
+import org.sopt.dosopttemplate.presentation.follower.FollowerViewModel
 
 
 class HomeFragment: Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding
         get() = requireNotNull(_binding) { "바인딩 객체가 생성되지 않았습니다" }
+
+    private val viewModel by viewModels<FollowerViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,76 +30,25 @@ class HomeFragment: Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { // 실제 프레그넌트 연결 후 보이는 곳
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val profileData = MyProfile(
-            profileImage = R.drawable.profile,
-            name = "박호연",
-            self_description = "상태메시지",
-        )
-        val profileAdapter = MyProfileAdapter(requireContext()).apply {
-            setMyProfile(profileData)
-        }
-
-        val friendAdapter = FriendAdapter(requireContext()).apply {
-            setFriendList(mockFriendList)
-        }
-
-        val concatAdapter = ConcatAdapter(profileAdapter, friendAdapter)
-        binding.rvFriends.adapter = concatAdapter
+        viewModel.loadFollowerData()
+        viewModel.followerData.observe(viewLifecycleOwner, Observer {data->
+            setAdapter(data)
+            Log.d("뷰모델", data.toString())
+        })
+    }
+    private fun setAdapter(followerList: List<ResponseFollowerDto.FollowerData>?){
+        Log.e("어댑터 연결 성공",followerList.toString())
+        val followerAdapter = FollowerAdapter()
+        binding.rvFollower.adapter = followerAdapter
+        followerAdapter.submitList(followerList)
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 
-    private val mockFriendList =listOf<Friend>(
-        Friend(
-            profileImage = R.drawable.jjangu,
-            name = "신짱구",
-            self_description = "",
-        ),
-        Friend(
-            profileImage = R.drawable.bongmiseon,
-            name = "봉미선",
-            self_description = "서른즈음에 - 김광석",
-        ),
-        Friend(
-            profileImage = R.drawable.shinhyeongshik,
-            name = "신영식",
-            self_description = "",
-        ),
-        Friend(
-            profileImage = R.drawable.jjanga,
-            name = "신짱아",
-            self_description = "",
-        ),
-        Friend(
-            profileImage = R.drawable.huindoongi,
-            name = "흰둥이",
-            self_description = "",
-        ),
-        Friend(
-            profileImage = R.drawable.cheolsu,
-            name = "김철수",
-            self_description = "",
-        ),
-        Friend(
-            profileImage = R.drawable.yuri,
-            name = "한유리",
-            self_description = "",
-        ),
-        Friend(
-            profileImage = R.drawable.huni,
-            name = "이훈이",
-            self_description = "",
-        ),
-        Friend(
-            profileImage = R.drawable.maenggu,
-            name = "맹구",
-            self_description = "",
-        ),
-    )
 }

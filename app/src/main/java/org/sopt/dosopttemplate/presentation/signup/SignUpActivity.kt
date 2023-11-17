@@ -7,8 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
-import org.sopt.dosopttemplate.data.RequestSignUpDto
+import org.sopt.dosopttemplate.data.auth.RequestSignUpDto
 import org.sopt.dosopttemplate.data.ServicePool
 import org.sopt.dosopttemplate.databinding.ActivitySignUpBinding
 import org.sopt.dosopttemplate.presentation.login.LoginActivity
@@ -41,29 +40,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
-
-    /*fun initSignBtnClickListener() {
-        binding.signButton.setOnClickListener {
-            if (binding.idEdit.text.isNullOrBlank() || binding.pwEdit.text.isNullOrBlank() || binding.nameEdit.text.isNullOrBlank()) {
-                makeSnackbar("모든 정보를 입력해 주세요.")
-            } else if (binding.idEdit.text.toString().length in 6..10 && binding.pwEdit.text.toString().length >= 8 && binding.pwEdit.text.toString().length <= 12 && binding.nameEdit.text.toString()
-                    .trim().isNotEmpty()
-            ) {
-                val intent = Intent(this, LoginActivity::class.java)
-                intent.putExtra("idValue", binding.idEdit.text.toString())
-                intent.putExtra("pwValue", binding.pwEdit.text.toString())
-                intent.putExtra("nameValue", binding.nameEdit.text.toString())
-                setResult(RESULT_OK, intent)
-                finish()
-            } else {
-                makeSnackbar("입력 정보를 다시 확인해주세요.")
-            }
-        }
-    }*/
-
-    /*fun makeSnackbar(message: String) {
-        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
-    }*/
 
     private fun signup() {
         binding.signButton.setOnClickListener {
