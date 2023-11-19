@@ -7,9 +7,9 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import org.sopt.dosopttemplate.data.ServicePool.authService
 import org.sopt.dosopttemplate.data.auth.RequestLoginDto
 import org.sopt.dosopttemplate.data.auth.ResponseLoginDto
-import org.sopt.dosopttemplate.data.ServicePool.authService
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.presentation.home.HomeActivity
 import org.sopt.dosopttemplate.presentation.signup.SignUpActivity
@@ -24,7 +24,6 @@ class LoginActivity : AppCompatActivity() {
     private var id: String? = null
     private var pw: String? = null
     private var name: String? = null
-    private var mbti: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +33,12 @@ class LoginActivity : AppCompatActivity() {
         setResult()
 
         initSignBtnClickListener()
-        //initLoginBtnClickListener()
         login()
     }
 
     private fun setResult() {
         resultLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
+            ActivityResultContracts.StartActivityForResult(),
         ) { result ->
             if (result.resultCode == RESULT_OK) {
                 id = result.data?.getStringExtra("username") ?: ""
@@ -63,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        binding.btLogin.setOnClickListener{
+        binding.btLogin.setOnClickListener {
             val id = binding.etIdEdit.text.toString()
             val password = binding.etPwEdit.text.toString()
             authService.login(RequestLoginDto(id, password))
@@ -83,8 +81,7 @@ class LoginActivity : AppCompatActivity() {
 
                             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                             startActivity(intent)
-                        }
-                        else{
+                        } else {
                             Toast.makeText(
                                 this@LoginActivity,
                                 "로그인에 실패하였습니다",
@@ -101,4 +98,3 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 }
-

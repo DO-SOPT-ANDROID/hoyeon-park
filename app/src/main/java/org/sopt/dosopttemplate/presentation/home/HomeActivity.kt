@@ -12,8 +12,9 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("yy","2")
+        Log.d("yy", "2")
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -28,8 +29,9 @@ class HomeActivity : AppCompatActivity() {
 
         clickBottomNavigation()
     }
+
     private fun clickBottomNavigation() {
-        binding.bnvHome.setOnItemSelectedListener{
+        binding.bnvHome.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_home -> {
                     replaceFragment(HomeFragment())

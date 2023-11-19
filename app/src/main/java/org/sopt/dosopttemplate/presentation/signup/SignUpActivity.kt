@@ -1,14 +1,14 @@
 package org.sopt.dosopttemplate.presentation.signup
 
 import android.content.Intent
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import org.sopt.dosopttemplate.data.auth.RequestSignUpDto
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import org.sopt.dosopttemplate.data.ServicePool
+import org.sopt.dosopttemplate.data.auth.RequestSignUpDto
 import org.sopt.dosopttemplate.databinding.ActivitySignUpBinding
 import org.sopt.dosopttemplate.presentation.login.LoginActivity
 import retrofit2.Call
@@ -25,20 +25,21 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //initSignBtnClickListener()
+        // initSignBtnClickListener()
         signup()
 
-        startLoginActivityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val intent = result.data
-                if (intent != null) {
-                    val loginSuccessful = intent.getBooleanExtra("loginSuccessful", false)
-                    if (loginSuccessful) {
-                        finish()
+        startLoginActivityForResult =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val intent = result.data
+                    if (intent != null) {
+                        val loginSuccessful = intent.getBooleanExtra("loginSuccessful", false)
+                        if (loginSuccessful) {
+                            finish()
+                        }
                     }
                 }
             }
-        }
     }
 
     private fun signup() {
@@ -63,9 +64,11 @@ class SignUpActivity : AppCompatActivity() {
 
                             val intent = Intent(this@SignUpActivity, LoginActivity::class.java)
                             startActivity(intent)
-                        }
-                        else{
-                            Log.e("SignUpActivity", "Unsuccessful response body: ${response.errorBody()?.string()}")
+                        } else {
+                            Log.e(
+                                "SignUpActivity",
+                                "Unsuccessful response body: ${response.errorBody()?.string()}",
+                            )
                             Toast.makeText(
                                 this@SignUpActivity,
                                 "회원가입에 실패하였습니다",

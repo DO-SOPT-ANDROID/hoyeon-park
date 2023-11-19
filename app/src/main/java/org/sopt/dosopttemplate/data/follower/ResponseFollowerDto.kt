@@ -16,7 +16,7 @@ data class ResponseFollowerDto(
     @SerialName("data")
     val data: List<FollowerData>,
     @SerialName("support")
-    val support: Support
+    val support: Support,
 ) {
     @Serializable
     data class FollowerData(
@@ -29,7 +29,7 @@ data class ResponseFollowerDto(
         @SerialName("last_name")
         val lastName: String,
         @SerialName("avatar")
-        val avatar: String
+        val avatar: String,
     )
 
     @Serializable
@@ -37,7 +37,6 @@ data class ResponseFollowerDto(
         @SerialName("url")
         val url: String,
         @SerialName("text")
-        val text: String
+        val text: String,
     )
-
 }

@@ -21,7 +21,8 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        val selectedDate = String.format(Locale.getDefault(), "%02d-%02d-%02d", year, month + 1, dayOfMonth)
+        val selectedDate =
+            String.format(Locale.getDefault(), "%02d-%02d-%02d", year, month + 1, dayOfMonth)
         val editText = activity?.findViewById<EditText>(R.id.deadlineEdit)
         editText?.setText(selectedDate)
     }

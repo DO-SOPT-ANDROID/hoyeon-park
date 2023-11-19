@@ -15,7 +15,7 @@ class MypageActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (intent.hasExtra("idValue") && intent.hasExtra("pwValue") && intent.hasExtra("nameValue") && intent.hasExtra(
-                "mbtiValue"
+                "mbtiValue",
             )
         ) {
             binding.tvIdValue.text = intent.getStringExtra("idValue")

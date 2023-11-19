@@ -1,24 +1,21 @@
 package org.sopt.dosopttemplate.presentation.follower
 
-import coil.load
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import coil.transform.CircleCropTransformation
-import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.data.ItemDiffCallback
-import org.sopt.dosopttemplate.databinding.ItemFollowerBinding
 import org.sopt.dosopttemplate.data.follower.ResponseFollowerDto
-
+import org.sopt.dosopttemplate.databinding.ItemFollowerBinding
 
 class FollowerAdapter() :
     ListAdapter<ResponseFollowerDto.FollowerData, FollowerAdapter.FollowerViewHolder>(
         ItemDiffCallback<ResponseFollowerDto.FollowerData>(
             onItemsTheSame = { old, new -> old == new },
-            onContentsTheSame = { old, new -> old == new }
-        )
+            onContentsTheSame = { old, new -> old == new },
+        ),
     ) {
 
     class FollowerViewHolder(private val binding: ItemFollowerBinding) :

@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.dosopttemplate.databinding.ItemFriendBinding
 
-
 class FriendAdapter(context: Context) : RecyclerView.Adapter<FriendViewHolder>() {
     private val inflater by lazy { LayoutInflater.from(context) }
 

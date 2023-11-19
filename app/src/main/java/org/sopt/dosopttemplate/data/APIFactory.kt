@@ -8,30 +8,6 @@ import org.sopt.dosopttemplate.data.auth.AuthService
 import org.sopt.dosopttemplate.data.follower.FollowerService
 import retrofit2.Retrofit
 
-/*object ApiFactory {
-    //private const val BASE_URL = BuildConfig.AUTH_BASE_URL
-    lateinit var url: String
-
-    val retrofit: Retrofit by lazy{
-        Retrofit.Builder()
-            .baseUrl(url)
-            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
-            .build()
-    }
-
-    inline fun <reified T> create(url: String): T{
-        this.url = url
-        return retrofit.create<T>(T::class.java)
-    }
-}
-
-object ServicePool {
-    private const val BASE_URL = BuildConfig.AUTH_BASE_URL
-    private const val REQRES_BASE_URL = BuildConfig.REQRES_BASE_URL
-
-    val authService = ApiFactory.create<AuthService>(BASE_URL)
-    val followerService = ApiFactory.create<FollowerService>(REQRES_BASE_URL)
-}*/
 object ApiFactory {
     private const val BASE_URL = BuildConfig.AUTH_BASE_URL
 
