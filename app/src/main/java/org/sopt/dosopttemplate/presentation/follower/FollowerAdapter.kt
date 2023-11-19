@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import org.sopt.dosopttemplate.data.ItemDiffCallback
+import org.sopt.dosopttemplate.presentation.util.ItemDiffCallback
 import org.sopt.dosopttemplate.data.follower.ResponseFollowerDto
 import org.sopt.dosopttemplate.databinding.ItemFollowerBinding
 
