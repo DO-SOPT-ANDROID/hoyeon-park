@@ -5,11 +5,12 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/iv_profile"
-        android:layout_width="50dp"
+        android:id="@+id/iv_avatar"
+        android:layout_width="100dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="20dp"
         android:scaleType="centerCrop"
         android:src="@drawable/profile"
         app:layout_constraintDimensionRatio="1"
@@ -20,23 +21,22 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:text="@string/follower_name"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/iv_profile"
-        app:layout_constraintStart_toEndOf="@id/iv_profile"
-        app:layout_constraintTop_toTopOf="@id/iv_profile" />
+        app:layout_constraintStart_toEndOf="@id/iv_avatar"
+        app:layout_constraintTop_toTopOf="@id/iv_avatar" />
 
     <TextView
-        android:id="@+id/tv_self_decription"
-        android:layout_width="0dp"
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:maxLines="1"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="@id/iv_profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/iv_profile" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/follower_email"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintStart_toEndOf="@id/iv_avatar"
+        app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

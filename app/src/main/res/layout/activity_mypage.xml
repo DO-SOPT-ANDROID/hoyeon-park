@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".presentation.mypage.MypageActivity">
 
     <ImageView
-        android:id="@+id/profileImage"
+        android:id="@+id/iv_profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="15dp"
@@ -19,7 +19,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/nameValue"
+        android:id="@+id/tv_name_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -27,11 +27,11 @@
         android:text="@string/main_test"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/profileImage"
-        app:layout_constraintTop_toTopOf="@id/profileImage" />
+        app:layout_constraintStart_toEndOf="@id/iv_profile_image"
+        app:layout_constraintTop_toTopOf="@id/iv_profile_image" />
 
     <TextView
-        android:id="@+id/idText"
+        android:id="@+id/tv_id_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -39,10 +39,10 @@
         android:text="@string/main_id"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profileImage" />
+        app:layout_constraintTop_toBottomOf="@id/iv_profile_image" />
 
     <TextView
-        android:id="@+id/idValue"
+        android:id="@+id/tv_id_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -51,10 +51,10 @@
         android:textColor="#808080"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idText" />
+        app:layout_constraintTop_toBottomOf="@id/tv_id_text" />
 
     <TextView
-        android:id="@+id/mbtiText"
+        android:id="@+id/tv_mbti_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -62,10 +62,10 @@
         android:text="@string/main_mbti"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idValue" />
+        app:layout_constraintTop_toBottomOf="@id/tv_id_value" />
 
     <TextView
-        android:id="@+id/mbtiValue"
+        android:id="@+id/tv_mbti_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -74,6 +74,6 @@
         android:textColor="#808080"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mbtiText" />
+        app:layout_constraintTop_toBottomOf="@id/tv_mbti_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

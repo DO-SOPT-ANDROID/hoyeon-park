@@ -1,6 +1,5 @@
-package org.sopt.dosopttemplate
+package org.sopt.dosopttemplate.presentation.home
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,8 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.sopt.dosopttemplate.databinding.FragmentMypageBinding
 
-
-class MyPageFragment: Fragment() {
+class MyPageFragment : Fragment() {
     private var _binding: FragmentMypageBinding? = null
     private val binding: FragmentMypageBinding
         get() = requireNotNull(_binding) { "바인딩 객체가 생성되지 않았습니다." }
@@ -18,30 +16,28 @@ class MyPageFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentMypageBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }*/
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?, ) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val bundle = arguments
-        val userId = bundle?.getString("idValue")
-        val userName = bundle?.getString("nameValue")
-        val userMbti = bundle?.getString("mbtiValue")
+        val userId = bundle?.getString("userId")
+        val userName = bundle?.getString("userName")
+        val userMbti = bundle?.getString("userMbti")
 
-        binding.run {
-            idValue.text = userId
-            nameValue.text = userName
-            mbtiValue.text = userMbti
-        }
-        Log.d("MyPageFragment", "전달된 데이터 - userId: $userId, userName: $userName, userMbti: $userMbti")
+        binding.tvIdValue.text = userId
+        binding.tvMbtiValue.text = userName
+        binding.tvNameValue.text = userMbti
+
+        Log.d(
+            "MyPageFragment",
+            "전달된 데이터 - userId: $userId, userName: $userName, userMbti: $userMbti",
+        )
     }
 
     override fun onDestroyView() {
@@ -49,4 +45,3 @@ class MyPageFragment: Fragment() {
         _binding = null
     }
 }
-

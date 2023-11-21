@@ -1,6 +1,5 @@
-package org.sopt.dosopttemplate
+package org.sopt.dosopttemplate.presentation.home
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.FragmentDoAndroidBinding
 
-
-class DoAndroidFragment: Fragment() {
+class DoAndroidFragment : Fragment() {
     private var _binding: FragmentDoAndroidBinding? = null
     private val binding: FragmentDoAndroidBinding
         get() = requireNotNull(_binding) { "바인딩 객체가 생성되지 않았습니다" }
@@ -21,7 +20,7 @@ class DoAndroidFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentDoAndroidBinding.inflate(inflater, container, false)
 
@@ -30,7 +29,6 @@ class DoAndroidFragment: Fragment() {
         }
 
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
