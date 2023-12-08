@@ -1,12 +1,16 @@
 package org.sopt.dosopttemplate.presentation.signup
 
+import SignUpViewModel
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import org.sopt.dosopttemplate.data.ServicePool
 import org.sopt.dosopttemplate.data.auth.RequestSignUpDto
 import org.sopt.dosopttemplate.databinding.ActivitySignUpBinding
@@ -19,13 +23,16 @@ class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var startLoginActivityForResult: ActivityResultLauncher<Intent>
+    private lateinit var viewModel: SignUpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // initSignBtnClickListener()
+        viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+
+        setupTextWatchers()
         signup()
 
         startLoginActivityForResult =
@@ -83,6 +90,45 @@ class SignUpActivity : AppCompatActivity() {
                         Toast.makeText(this@SignUpActivity, errorMessage, Toast.LENGTH_SHORT).show()
                     }
                 })
+        }
+    }
+
+    private fun setupTextWatchers() {
+        binding.etIdEdit.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.validateId(s.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        binding.etPwEdit.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.validatePassword(s.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        // SignupViewModel에서 발생한 아이디와 비밀번호의 유효성 검사 결과 버튼 활성화 여부 업데이트
+        viewModel.idErrorMessage.observe(this) { error ->
+            binding.etIdEdit.error = error
+        }
+
+        viewModel.passwordErrorMessage.observe(this) { error ->
+            binding.etPwEdit.error = error
+        }
+
+        viewModel.isSignUpButtonEnabled.observe(this) { isEnabled ->
+            binding.btSignUp.isEnabled = isEnabled
         }
     }
 }
