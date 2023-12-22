@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import org.sopt.dosopttemplate.data.ServicePool.authService
+import org.sopt.dosopttemplate.data.ServicePool
 import org.sopt.dosopttemplate.data.auth.RequestLoginDto
 import org.sopt.dosopttemplate.data.model.LoginState
 
@@ -19,7 +19,7 @@ class LoginViewModel : ViewModel() {
     fun login(id: String, password: String) {
         viewModelScope.launch {
             kotlin.runCatching {
-                authService.login(RequestLoginDto(id, password))
+                ServicePool.authService.login(RequestLoginDto(id, password))
             }.onSuccess {
                 _loginState.value = LoginState.Success(it.body()!!)
             }.onFailure {

@@ -90,7 +90,7 @@ class SignUpActivity : AppCompatActivity() {
                     is SignupState.Error -> {
                         Toast.makeText(this@SignUpActivity, "회원가입에 실패하였습니다", Toast.LENGTH_SHORT).show()
                     }
-                    is SignupState.Loading, null -> {
+                    else -> {
                         // 대기 중은 따로 안띄우기
                     }
                 }
