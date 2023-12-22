@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
-import org.sopt.dosopttemplate.presentation.util.ItemDiffCallback
 import org.sopt.dosopttemplate.data.follower.ResponseFollowerDto
 import org.sopt.dosopttemplate.databinding.ItemFollowerBinding
+import org.sopt.dosopttemplate.presentation.util.ItemDiffCallback
 
 class FollowerAdapter() :
     ListAdapter<ResponseFollowerDto.FollowerData, FollowerAdapter.FollowerViewHolder>(
