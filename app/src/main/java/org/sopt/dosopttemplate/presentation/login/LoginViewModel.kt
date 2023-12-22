@@ -1,40 +1,30 @@
 package org.sopt.dosopttemplate.presentation.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.data.ServicePool.authService
 import org.sopt.dosopttemplate.data.auth.RequestLoginDto
-import org.sopt.dosopttemplate.data.auth.ResponseLoginDto
-import retrofit2.Call
-import retrofit2.Response
+import org.sopt.dosopttemplate.data.model.LoginState
 
 class LoginViewModel : ViewModel() {
 
-    private val _loginResult = MutableLiveData<String>()
-    val loginResult: LiveData<String>
-        get() = _loginResult
+    // UI State
+    private val _loginState = MutableStateFlow<LoginState>(LoginState.Loading)
+    val loginState: StateFlow<LoginState> = _loginState.asStateFlow()
 
     fun login(id: String, password: String) {
-        authService.login(RequestLoginDto(id, password))
-            .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
-                override fun onResponse(
-                    call: Call<ResponseLoginDto>,
-                    response: Response<ResponseLoginDto>,
-                ) {
-                    if (response.isSuccessful) {
-                        val data: ResponseLoginDto = response.body()!!
-                        val userId = data.id
-                        _loginResult.value = "로그인이 성공하였습니다! 유저의 ID는 $userId 입니다."
-                    } else {
-                        _loginResult.value = "로그인에 실패하였습니다"
-                    }
-                }
-
-                override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
-                    val errorMessage = "서버 통신 실패: ${t.message}"
-                    _loginResult.value = errorMessage
-                }
-            })
+        viewModelScope.launch {
+            kotlin.runCatching {
+                authService.login(RequestLoginDto(id, password))
+            }.onSuccess {
+                _loginState.value = LoginState.Success(it.body()!!)
+            }.onFailure {
+                _loginState.value = LoginState.Error
+            }
+        }
     }
 }
