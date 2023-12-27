@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.data.follower.ResponseFollowerDto
+import org.sopt.dosopttemplate.data.model.FollowerState
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
 import org.sopt.dosopttemplate.presentation.follower.FollowerAdapter
 import org.sopt.dosopttemplate.presentation.follower.FollowerViewModel
@@ -32,14 +34,25 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.loadFollowerData()
-        viewModel.followerData.observe(
-            viewLifecycleOwner,
-            Observer { data ->
-                setAdapter(data)
-                Log.d("뷰모델", data.toString())
-            },
-        )
+        viewModel.loadFollowerDataFlow()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.followerState.collect { state ->
+                when (state) {
+                    is FollowerState.Loading -> {
+                        // 로딩은 빈칸
+                    }
+
+                    is FollowerState.Success -> {
+                        setAdapter(state.data.data)
+                        Log.d("뷰모델", state.data.data.toString())
+                    }
+
+                    is FollowerState.Error -> {
+                        // 에러는 빈칸
+                    }
+                }
+            }
+        }
     }
 
     private fun setAdapter(followerList: List<ResponseFollowerDto.FollowerData>?) {

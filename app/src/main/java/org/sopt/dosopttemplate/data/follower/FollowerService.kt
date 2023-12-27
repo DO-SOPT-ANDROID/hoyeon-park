@@ -1,12 +1,12 @@
 package org.sopt.dosopttemplate.data.follower
 
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface FollowerService {
     @GET("api/users")
-    fun follower(
+    suspend fun follower(
         @Query("page") num: Int = 2,
-    ): Call<ResponseFollowerDto>
+    ): Response<ResponseFollowerDto>
 }
