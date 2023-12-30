@@ -130,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="명"
+            android:text="@string/post_recruit_count"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/recruitEdit"
             app:layout_constraintStart_toEndOf="@id/recruitEdit"
