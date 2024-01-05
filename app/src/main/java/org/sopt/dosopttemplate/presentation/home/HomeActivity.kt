@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivityHomeBinding
+import org.sopt.dosopttemplate.presentation.follower.FollowerViewPagerFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -44,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
                 }
 
                 R.id.menu_mypage -> {
-                    replaceFragment(MyPageFragment())
+                    replaceFragment(FollowerViewPagerFragment())
                     true
                 }
 

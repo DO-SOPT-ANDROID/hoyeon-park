@@ -42,8 +42,9 @@
 
         <activity
             android:name="org.sopt.dosopttemplate.presentation.home.HomeActivity"
-            android:exported="true">
+            android:exported="false">
         </activity>
+
 
     </application>
 
